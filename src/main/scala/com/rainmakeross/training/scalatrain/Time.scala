@@ -1,8 +1,8 @@
 package com.rainmakeross.training.scalatrain
 
-class Time(val hours: Int = 0, val minutes: Int = 0) {
-  // TODO verify hours is from 0 to 23
-  // TODO verify minutes is from 0 to 59
+case class Time(hours: Int = 0, minutes: Int = 0) {
+  require(hours >=0 & hours <=23, "hours is from 0 to 23")
+  require(minutes >=0 & minutes <=59, "minutes is from 0 to 59")
 
   val asMinutes:Int = hours*60 + minutes
 
@@ -20,6 +20,6 @@ object Time {
     val actualMin = minutes % 60
     val actualHrs = minutes / 60
 
-    new Time(actualHrs, actualMin)
+    Time(actualHrs, actualMin)
   }
 }
